@@ -51,7 +51,7 @@ class Header extends StatelessWidget {
 
           //----------------Data row----------------//
           Positioned(
-            bottom: 10,
+            bottom: 15,
             right: 16.w,
             left: 16.w,
             child: Row(
@@ -61,14 +61,13 @@ class Header extends StatelessWidget {
                   height: 39.h,
                   width: 39.h,
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFFE2C2),
-                    borderRadius: BorderRadius.circular(8.r),
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 1
-                    )
+                      color: const Color(0xFFFFE2C2),
+                      borderRadius: BorderRadius.circular(8.r),
+                      border: Border.all(color: Colors.white, width: 1)),
+                  child: Image.asset(
+                    'assets/images/person1.png',
+                    height: double.infinity,
                   ),
-                  child: Image.asset('assets/images/person1.png',height: double.infinity,),
                 ),
                 9.horizontalSpace,
                 Column(
@@ -99,9 +98,13 @@ class Header extends StatelessWidget {
                     child: Container(
                       height: 39.h,
                       width: 39.h,
-                      decoration: theme.extension<HeaderContainerThemeData>()?.decoration,
+                      decoration: theme
+                          .extension<HeaderContainerThemeData>()
+                          ?.decoration,
                       child: SvgPicture.asset(
-                        Get.isDarkMode ? 'assets/vectors/moon.svg' : 'assets/vectors/sun.svg',
+                        Get.isDarkMode
+                            ? 'assets/vectors/moon.svg'
+                            : 'assets/vectors/sun.svg',
                         fit: BoxFit.none,
                         color: Colors.white,
                         height: 10,
@@ -116,13 +119,17 @@ class Header extends StatelessWidget {
                 //----------------Language Button----------------//
                 InkWell(
                   onTap: () => LocalizationService.updateLanguage(
-                    LocalizationService.getCurrentLocal().languageCode == 'ar' ? 'en' : 'ar',
+                    LocalizationService.getCurrentLocal().languageCode == 'ar'
+                        ? 'en'
+                        : 'ar',
                   ),
                   child: Ink(
                     child: Container(
                       height: 39.h,
                       width: 39.h,
-                      decoration: theme.extension<HeaderContainerThemeData>()?.decoration,
+                      decoration: theme
+                          .extension<HeaderContainerThemeData>()
+                          ?.decoration,
                       child: SvgPicture.asset(
                         'assets/vectors/language.svg',
                         fit: BoxFit.none,

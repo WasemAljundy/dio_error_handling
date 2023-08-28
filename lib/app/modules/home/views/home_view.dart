@@ -20,6 +20,11 @@ class HomeView extends GetView<HomeController> {
           GetBuilder<HomeController>(builder: (_) {
             return Expanded(
               child: MyWidgetsAnimator(
+                animationDuration: const Duration(milliseconds: 500),
+                transitionBuilder: (p0, p1) => ScaleTransition(
+                  scale: p1,
+                  child: p0,
+                ),
                 apiCallStatus: controller.apiCallStatus,
                 loadingWidget: () => const Center(
                   child: CupertinoActivityIndicator(),
@@ -39,7 +44,8 @@ class HomeView extends GetView<HomeController> {
                           left: 15,
                         ),
                         child: SearchBar(
-                          backgroundColor: MaterialStateProperty.all(Colors.white70),
+                          backgroundColor:
+                          MaterialStateProperty.all(Colors.white70),
                           leading: const Icon(Icons.search),
                           padding: MaterialStateProperty.all(
                             EdgeInsets.symmetric(horizontal: 15.h),
@@ -66,7 +72,7 @@ class HomeView extends GetView<HomeController> {
                           contentPadding: EdgeInsets.zero,
                           leading: CircleAvatar(
                             backgroundImage:
-                                NetworkImage(controller.users[index].image),
+                            NetworkImage(controller.users[index].image),
                             radius: 30,
                           ),
                           title: Text(
