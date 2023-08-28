@@ -44,8 +44,13 @@ class HomeView extends GetView<HomeController> {
                           left: 15,
                         ),
                         child: SearchBar(
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.r),
+                            ),
+                          ),
                           backgroundColor:
-                          MaterialStateProperty.all(Colors.white70),
+                              MaterialStateProperty.all(Colors.white70),
                           leading: const Icon(Icons.search),
                           padding: MaterialStateProperty.all(
                             EdgeInsets.symmetric(horizontal: 15.h),
@@ -72,7 +77,7 @@ class HomeView extends GetView<HomeController> {
                           contentPadding: EdgeInsets.zero,
                           leading: CircleAvatar(
                             backgroundImage:
-                            NetworkImage(controller.users[index].image),
+                                NetworkImage(controller.users[index].image),
                             radius: 30,
                           ),
                           title: Text(

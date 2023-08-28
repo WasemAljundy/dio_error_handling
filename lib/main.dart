@@ -33,17 +33,15 @@ class MyApp extends StatelessWidget {
             return Theme(
               data: MyTheme.getThemeData(isLight: themeIsLight),
               child: MediaQuery(
-                // prevent font from scaling (some people use big/small device fonts)
-                // but we want our app font to still the same and dont get affected
                 data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
                 child: widget!,
               ),
             );
           },
-          initialRoute: AppPages.initial, // first screen to show when app is running
-          getPages: AppPages.routes, // app screens
-          locale: MySharedPref.getCurrentLocal(), // app language
-          translations: LocalizationService.getInstance(), // localization services in app (controller app language)
+          initialRoute: AppPages.initial,
+          getPages: AppPages.routes,
+          locale: MySharedPref.getCurrentLocal(),
+          translations: LocalizationService.getInstance(),
         );
       },
     );

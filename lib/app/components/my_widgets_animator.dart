@@ -37,28 +37,29 @@ class MyWidgetsAnimator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSwitcher(
-        duration: animationDuration ?? const Duration(milliseconds: 300),
-        transitionBuilder:
-            transitionBuilder ?? AnimatedSwitcher.defaultTransitionBuilder,
-        child: switch (apiCallStatus) {
-          (ApiCallStatus.success) => successWidget,
-          (ApiCallStatus.error) => errorWidget,
-          (ApiCallStatus.holding) => holdingWidget ??
-              () {
-                return const SizedBox();
-              },
-          (ApiCallStatus.loading) => loadingWidget,
-          (ApiCallStatus.empty) => emptyWidget ??
-              () {
-                return const SizedBox();
-              },
-          (ApiCallStatus.refresh) => refreshWidget ??
-              (hideSuccessWidgetWhileRefreshing
-                  ? successWidget
-                  : () {
-                      return const SizedBox();
-                    }),
-          (ApiCallStatus.cache) => successWidget,
-        }());
+      duration: animationDuration ?? const Duration(milliseconds: 300),
+      transitionBuilder:
+          transitionBuilder ?? AnimatedSwitcher.defaultTransitionBuilder,
+      child: switch (apiCallStatus) {
+        (ApiCallStatus.success) => successWidget,
+        (ApiCallStatus.error) => errorWidget,
+        (ApiCallStatus.holding) => holdingWidget ??
+            () {
+              return const SizedBox();
+            },
+        (ApiCallStatus.loading) => loadingWidget,
+        (ApiCallStatus.empty) => emptyWidget ??
+            () {
+              return const SizedBox();
+            },
+        (ApiCallStatus.refresh) => refreshWidget ??
+            (hideSuccessWidgetWhileRefreshing
+                ? successWidget
+                : () {
+                    return const SizedBox();
+                  }),
+        (ApiCallStatus.cache) => successWidget,
+      }(),
+    );
   }
 }

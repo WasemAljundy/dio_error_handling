@@ -5,6 +5,7 @@ import '../../../config/translations/localization_service.dart';
 
 class MySharedPref {
   MySharedPref._();
+
   static late SharedPreferences _sharedPreferences;
 
   static const String _fcmTokenKey = 'fcm_token';
@@ -28,20 +29,18 @@ class MySharedPref {
   static Future<void> setCurrentLanguage(String languageCode) =>
       _sharedPreferences.setString(_currentLocalKey, languageCode);
 
-  static Locale getCurrentLocal(){
-      String? langCode = _sharedPreferences.getString(_currentLocalKey);
-      if(langCode == null){
-        return LocalizationService.defaultLanguage;
-      }
-      return LocalizationService.supportedLanguages[langCode]!;
+  static Locale getCurrentLocal() {
+    String? langCode = _sharedPreferences.getString(_currentLocalKey);
+    if (langCode == null) {
+      return LocalizationService.defaultLanguage;
+    }
+    return LocalizationService.supportedLanguages[langCode]!;
   }
 
   static Future<void> setFcmToken(String token) =>
       _sharedPreferences.setString(_fcmTokenKey, token);
 
-  static String? getFcmToken() =>
-      _sharedPreferences.getString(_fcmTokenKey);
+  static String? getFcmToken() => _sharedPreferences.getString(_fcmTokenKey);
 
   static Future<void> clear() async => await _sharedPreferences.clear();
-
 }
